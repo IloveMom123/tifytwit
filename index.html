@@ -1,74 +1,50 @@
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
-<style type="text/css">body {
-            font-family: sans-serif;
-            margin: 0; /* Remove default body margin */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            background-image: url("your_logo.png"); /* Set background image */
-            background-size: cover; /* Cover the entire viewport */
-            background-position: center; /* Center the image */
-            color: white; /* Default text color to white for better contrast */
-            text-shadow: 2px 2px 4px #000000; /* Add a text shadow for readability */
-        }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiffytube Search</title>
+    <style>
+        /* ... (CSS styles remain the same) */
+    </style>
+</head>
+<body>
 
-        /* Add a semi-transparent overlay for better text readability */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
-            z-index: -1; /* Place overlay behind content */
-        }
+    <h1>Welcome to Tiffytube</h1>
+    <div id="search-container">
+        <input type="text" id="search-box" placeholder="Search with Tiffytube...">
+        <button id="search-button">Search</button>
+    </div>
 
-        #search-container {
-            display: flex;
-            width: 80%;
-            max-width: 600px;
-            margin-top: 100px; /* Adjust top margin for positioning */
-            margin-bottom: 20px;
-        }
-        #search-box {
-            flex-grow: 1;
-            padding: 10px;
-            border: none; /* Remove default border */
-            border-radius: 5px 0 0 5px;
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
-        }
-        #search-button {
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
+    <script>
+        // Move the script to the end of the <body> or use defer
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.getElementById('search-box');
+            const searchButton = document.getElementById('search-button');
 
-        h1 {
-            margin-top: 50px; /* Adjust top margin for positioning */
-        }
+            function performSearch() {
+                const query = searchBox.value;
+                if (query.trim() !== "") {
+                    const bingSearchUrl = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
+                    window.location.href = bingSearchUrl;
+                } else {
+                    alert("Please enter a search term.");
+                }
+            }
 
-        footer {
-            margin-top: auto;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-        }
-</style>
-<h1>Welcome to Tiffytwit!</h1>
+            searchButton.addEventListener('click', performSearch);
 
-<div id="search-container"><input id="search-box" maxlength="90" placeholder="Search Anything" type="text" /><button id="search-button">Search</button></div>
-<script>
-        // ... (JavaScript code remains the same)
+            searchBox.addEventListener('keydown', function(event) {
+                if (event.key === "Enter") {
+                    performSearch();
+                }
+            });
+        });
+
     </script>
+    <footer>
+        <p>&copy; 2023 Tiffytube. Powered by Bing.</p>
+    </footer>
 
-<footer>
-<p>© 2023 Tiffytube. Powered by Bing.</p>
-</footer>
+</body>
+</html>

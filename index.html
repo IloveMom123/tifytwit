@@ -1,6 +1,11 @@
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
-<style type="text/css">body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TifyTwit - Search</title>
+    <style>
+        body {
             font-family: sans-serif;
             display: flex;
             flex-direction: column;
@@ -9,15 +14,10 @@
             min-height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
-            /* Background Image Styles */
-            background-image: url("your-background-image.jpg"); /* Replace with your image URL */
-            background-size: cover; /* or contain, depending on your needs */
-            background-repeat: no-repeat;
-            background-position: center; /* Center the image */
         }
 
         #search-container {
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -49,29 +49,35 @@
             color: #4285f4;
             text-shadow: 2px 2px 4px #000000;
         }
-</style>
-<h1>TifyTwit</h1>
+    </style>
+</head>
+<body>
+    <h1>TifyTwit - Search</h1>
+    <div id="search-container">
+        <input type="text" id="search-box" placeholder="Search Anything...">
+        <button id="search-button">Search</button>
+    </div>
 
-<div id="search-container"><input id="search-box" placeholder="Search Anything..." type="text" /><button id="search-button">Search</button></div>
-<script>
-        // ... (JavaScript code remains the same)
+    <script>
         const searchBox = document.getElementById('search-box');
         const searchButton = document.getElementById('search-button');
 
         searchButton.addEventListener('click', performSearch);
         searchBox.addEventListener("keydown", function (e) {
-            if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+            if (e.code === "Enter") {
                 performSearch();
             }
         });
 
         function performSearch() {
             const searchTerm = searchBox.value;
-            if (searchTerm.trim() !== "") { // Prevent empty searches
+            if (searchTerm.trim() !== "") {
                 const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
-                window.location.href = googleSearchUrl; // Redirect to Google Search
+                window.open(googleSearchUrl, '_blank'); // Open in new tab
             } else {
-                alert("Please enter a search term."); // Alert if search box is empty
+                alert("Please enter a search term.");
             }
         }
     </script>
+</body>
+</html>

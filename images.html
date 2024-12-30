@@ -54,7 +54,7 @@
 <body>
     <h1>TifyTwit - Image Search</h1>
     <div id="search-container">
-        <input type="text" id="search-box" placeholder="Search For Any Image...">
+        <input type="text" id="search-box" placeholder="Search For Any Image Or GIF...">
         <button id="search-button">Search Images</button>
     </div>
 
@@ -64,7 +64,7 @@
 
         searchButton.addEventListener('click', performImageSearch);
         searchBox.addEventListener("keydown", function (e) {
-            if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+            if (e.code === "Enter") {
                 performImageSearch();
             }
         });
@@ -73,7 +73,7 @@
             const searchTerm = searchBox.value;
             if (searchTerm.trim() !== "") {
                 const googleImageSearchUrl = `https://www.google.com/images?q=${encodeURIComponent(searchTerm)}`;
-                window.location.href = googleImageSearchUrl;
+                window.open(googleImageSearchUrl, '_blank'); // Open in new tab
             } else {
                 alert("Please enter a search term.");
             }

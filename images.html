@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TifyTwit - Image Search</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #search-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #search-box {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #search-button {
+            padding: 10px 20px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #search-button:hover{
+            background-color: #357ae8;
+        }
+        h1{
+            color: #4285f4;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+</head>
+<body>
+    <h1>TifyTwit - Image Search</h1>
+    <div id="search-container">
+        <input type="text" id="search-box" placeholder="Search For Any Image...">
+        <button id="search-button">Search Images</button>
+    </div>
+
+    <script>
+        const searchBox = document.getElementById('search-box');
+        const searchButton = document.getElementById('search-button');
+
+        searchButton.addEventListener('click', performImageSearch);
+        searchBox.addEventListener("keydown", function (e) {
+            if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+                performImageSearch();
+            }
+        });
+
+        function performImageSearch() {
+            const searchTerm = searchBox.value;
+            if (searchTerm.trim() !== "") {
+                const googleImageSearchUrl = `https://www.google.com/images?q=${encodeURIComponent(searchTerm)}`;
+                window.location.href = googleImageSearchUrl;
+            } else {
+                alert("Please enter a search term.");
+            }
+        }
+    </script>
+</body>
+</html>
